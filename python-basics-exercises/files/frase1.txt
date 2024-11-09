@@ -1,0 +1,3 @@
+Olá
+estou estudando python
+e estou gostando
