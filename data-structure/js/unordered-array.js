@@ -7,7 +7,9 @@ var UnorderedArray = /** @class */ (function () {
     UnorderedArray.prototype.print = function () {
         if (this.lastPos === -1)
             return console.log("The array is empty");
-        return console.log(this.values);
+        for (var i = 0; i <= this.lastPos; i++) {
+            console.log("".concat(i, " -- ").concat(this.values[i], " "));
+        }
     };
     UnorderedArray.prototype.insert = function (value) {
         if (this.length === this.lastPos + 1)
@@ -47,4 +49,4 @@ console.log(unorderedArray.find(3)); // 2
 console.log(unorderedArray.remove(6)); // -1
 unorderedArray.remove(3);
 unorderedArray.insert(6);
-unorderedArray.print(); // [1, 2, 3, 4, 5, 6]
+unorderedArray.print(); // [1, 2, 4, 5, 6]

@@ -10,7 +10,10 @@ class UnorderedArray {
 
   print() {
     if (this.lastPos === -1) return console.log("The array is empty");
-    return console.log(this.values);
+
+    for (let i = 0; i <= this.lastPos; i++) {
+      console.log(`${i} -- ${this.values[i]} `);
+    }
   }
 
   insert(value: number) {
@@ -53,4 +56,4 @@ console.log(unorderedArray.find(3)); // 2
 console.log(unorderedArray.remove(6)); // -1
 unorderedArray.remove(3);
 unorderedArray.insert(6);
-unorderedArray.print(); // [1, 2, 3, 4, 5, 6]
+unorderedArray.print(); // [1, 2, 4, 5, 6]
