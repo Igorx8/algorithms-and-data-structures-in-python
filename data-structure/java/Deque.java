@@ -1,5 +1,3 @@
-package pkg.thread;
-
 public class Deque {
     private final int length;
     private final int[] values;
@@ -12,24 +10,24 @@ public class Deque {
 
     private boolean isFull() {
         return (this.rightElem == this.leftElem + 1) ||
-                (this.rightElem == 0 && this.leftElem == this.length -1);
+                (this.rightElem == 0 && this.leftElem == this.length - 1);
     }
 
     public void showQueue() {
-        if(!this.isEmpty()) {
-            for(int i = 0; i < this.length; i++) {
+        if (!this.isEmpty()) {
+            for (int i = 0; i < this.length; i++) {
                 System.out.println(this.values[i]);
             }
         }
     }
 
-    public void addLeft(int value){
-        if(this.isFull()){
+    public void addLeft(int value) {
+        if (this.isFull()) {
             System.out.println("The queue is already full");
             return;
         }
 
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             this.leftElem = 0;
             this.rightElem = 0;
         } else {
@@ -40,19 +38,19 @@ public class Deque {
     }
 
     public void addRight(int value) {
-        if(this.isFull()){
+        if (this.isFull()) {
             System.out.println("The queue is already full");
             return;
         }
 
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             this.leftElem = 0;
             this.rightElem = 0;
         } else {
-            if(this.rightElem == 0) {
-                this.rightElem = this.length -1;
+            if (this.rightElem == 0) {
+                this.rightElem = this.length - 1;
             } else {
-                this.rightElem -=1;
+                this.rightElem -= 1;
             }
         }
 
@@ -60,7 +58,7 @@ public class Deque {
     }
 
     public void removeLeft() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             System.out.println("The queue is empty");
             return;
         }
@@ -77,15 +75,15 @@ public class Deque {
     }
 
     public void removeRight() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             System.out.println("The queue is empty");
             return;
         }
 
-        if(this.leftElem == this.rightElem) {
+        if (this.leftElem == this.rightElem) {
             this.leftElem = -1;
             this.rightElem = -1;
-        } else if(this.rightElem == this.length -1) {
+        } else if (this.rightElem == this.length - 1) {
             this.rightElem = 0;
         } else {
             this.rightElem += 1;
@@ -96,6 +94,7 @@ public class Deque {
         this.length = length;
         this.values = new int[length];
     }
+
     public static void main(String[] args) {
         Deque d = new Deque(5);
         d.addRight(6);
