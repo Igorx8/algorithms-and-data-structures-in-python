@@ -14,7 +14,7 @@ public class Stack {
         }
     }
 
-    public void stack(int value) {
+    public void push(int value) {
         if (this.top == this.capacity - 1) {
             System.out.println("The array is already filled");
             return;
@@ -24,7 +24,7 @@ public class Stack {
         this.values[this.top] = value;
     }
 
-    public void unstack() {
+    public void pop() {
         if (this.top == -1) {
             System.out.println("The array is empty");
             return;
@@ -39,19 +39,19 @@ public class Stack {
 
     public static void main(String[] args) {
         Stack s = new Stack(5);
-        s.stack(5);
-        s.stack(3);
-        s.stack(1);
-        s.stack(4);
-        s.stack(2);
+        s.push(5);
+        s.push(3);
+        s.push(1);
+        s.push(4);
+        s.push(2);
         s.print();
-        s.unstack();
-        s.unstack();
-        s.unstack();
-        s.unstack();
-        s.unstack();
+        s.pop();
+        s.pop();
+        s.pop();
+        s.pop();
+        s.pop();
         s.print();
-        s.stack(6);
+        s.push(6);
         System.out.println(s.getTop());
     }
 }

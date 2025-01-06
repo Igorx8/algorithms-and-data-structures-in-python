@@ -16,7 +16,7 @@ class Stack {
     return this.top === -1;
   }
 
-  stack(value: number) {
+  push(value: number) {
     if (this.filled()) console.log("The stack is already filled");
     else {
       this.top++;
@@ -24,7 +24,7 @@ class Stack {
     }
   }
 
-  unstack() {
+  pop() {
     if (this.empty()) console.log("The stack is empty");
     else {
       this.top--;
@@ -41,17 +41,17 @@ class Stack {
 
 const s = new Stack(5);
 s.getTop();
-s.stack(1);
-s.stack(2);
-s.stack(3);
-s.stack(4);
-s.stack(5);
-s.unstack();
-s.stack(6);
+s.push(1);
+s.push(2);
+s.push(3);
+s.push(4);
+s.push(5);
+s.pop();
+s.push(6);
 console.log(s.getTop());
-s.unstack();
-s.unstack();
-s.unstack();
-s.unstack();
-s.unstack();
-s.unstack();
+s.pop();
+s.pop();
+s.pop();
+s.pop();
+s.pop();
+s.pop();
