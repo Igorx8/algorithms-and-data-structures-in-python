@@ -34,10 +34,8 @@ class LinkedStack:
             return value
         
         current = self.head
-        
-        while current.next:
-            if current.next == self.__top:
-                break
+
+        while current.next != self.__top:
             current = current.next
         
         temp = self.__top.value
@@ -60,3 +58,7 @@ ls.pop()
 ls.top()
 ls.pop()
 ls.top()
+ls.pop()
+ls.top()
+ls.pop()
+ls.pop() 
