@@ -1,3 +1,4 @@
+package queues;
 
 public class PriorityQueue {
     private final int length;

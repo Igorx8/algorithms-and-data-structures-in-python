@@ -1,3 +1,5 @@
+package queues;
+
 public class CircularQueue {
     private int capacity;
     private int values[];
