@@ -18,4 +18,4 @@ def quick_sort(arr, start, end):
 
 
 array = [8,5,7,3,1,4,2,5]
-print(quick_sort(array, 0, len(array) - 1))
+quick_sort(array, 0, len(array) - 1)

@@ -13,7 +13,6 @@ def insertion_sort(arr):
             j-=1
         arr[j + 1] = target
 
-    print(arr)
     return arr
 
 

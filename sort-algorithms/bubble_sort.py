@@ -31,4 +31,4 @@ def bubble_sort(array):
         c+=1
     return array
 
-print(bubble_sort(arr))
+bubble_sort(arr)

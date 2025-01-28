@@ -30,7 +30,6 @@ def merge_sort(arr):
             j+=1
             k +=1
 
-    print(arr)
     return arr
 
 merge_sort(np.array([8,5,1,4,2,3], dtype=int))
