@@ -53,6 +53,7 @@ class VetorOrdenado:
 
             self.ultima_posicao -= 1
 
+""" 
 vetor = VetorOrdenado(10)
 vetor.imprime()
 vetor.insere(6)
@@ -68,7 +69,7 @@ vetor.excluir(8)
 vetor.excluir(3)
 print(vetor.excluir(9))
 vetor.imprime()
-
+ """
     
 
 """ 
