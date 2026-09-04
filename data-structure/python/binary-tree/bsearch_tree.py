@@ -4,6 +4,7 @@ from node import Node
 class BSearchTree:
     def __init__(self):
         self.root = None
+        self.list = []
 
     def insert(self, value):
         new = Node(value)
@@ -18,14 +19,21 @@ class BSearchTree:
                     current = current.left
                     if current == None:
                         parent.left = new
+                        self.list.append(f"{parent.value} -> {new.value}")
                         return
-                if value > current.value:
+                else:
                     current = current.right
                     if current == None:
                         parent.right = new
+                        self.list.append(f"{parent.value} -> {new.value}")
                         return
 
-    def find(self, value: int):
+    def read(self):
+        "Function to generate data for viz.js (tree preview)"
+        for el in self.list:
+            print(el)
+
+    def find(self, value):
         current = self.root
 
         while current is not None:
@@ -40,16 +48,31 @@ class BSearchTree:
         print("Not found")
         return False
 
+    def pre_order(self, parent: Node | None):
+        if parent == None:
+            return
+
+        print(parent.value)
+
+        self.pre_order(parent.left)
+        self.pre_order(parent.right)
+
 
 bst = BSearchTree()
-bst.insert(3)
-bst.insert(2)
-bst.insert(5)
-bst.insert(4)
-bst.insert(1)
-bst.find(3)
-bst.find(6)
+bst.insert(53)
+bst.insert(30)
+bst.insert(72)
+bst.insert(14)
+bst.insert(9)
+bst.insert(23)
+bst.insert(39)
+bst.insert(34)
+bst.insert(49)
+bst.insert(61)
+bst.insert(84)
+bst.insert(79)
+bst.find(9)
+bst.find(79)
 bst.find(0)
-bst.find(1)
-bst.find(5)
-bst.find(4)
+bst.find(34)
+bst.pre_order(bst.root)
