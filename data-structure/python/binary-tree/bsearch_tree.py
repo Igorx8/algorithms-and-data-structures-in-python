@@ -48,14 +48,20 @@ class BSearchTree:
         print("Not found")
         return False
 
-    def pre_order(self, parent: Node | None):
-        if parent == None:
+    def pre_order(self, current: Node | None):
+        if current == None:
             return
 
-        print(parent.value)
+        print(current.value)
 
-        self.pre_order(parent.left)
-        self.pre_order(parent.right)
+        self.pre_order(current.left)
+        self.pre_order(current.right)
+
+    def in_order(self, current: Node | None):
+        if current != None:
+            self.in_order(current.left)
+            print(current.value)
+            self.in_order(current.right)
 
 
 bst = BSearchTree()
@@ -76,3 +82,4 @@ bst.find(79)
 bst.find(0)
 bst.find(34)
 bst.pre_order(bst.root)
+bst.in_order(bst.root)
