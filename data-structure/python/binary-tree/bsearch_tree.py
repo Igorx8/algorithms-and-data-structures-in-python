@@ -66,6 +66,100 @@ class BSearchTree:
             self.post_order(current.right)
             print(current.value)
 
+    def get_substitute(self, node):
+        previous = node
+        current = node
+        next = node.right
+
+        while next != None:
+            previous = current
+            current = next
+            next = next.left
+
+        if current != node.right:
+            previous.left = current.right
+            current.right = node.right
+
+        return current
+
+    def remove(self, value: int):
+        if self.root == None:
+            return False
+        else:
+            current = self.root
+            parent = self.root
+            is_left = True
+
+            while current.value != value:
+                parent = current
+                if value > current.value:
+                    current = current.right
+                    is_left = False
+                else:
+                    current = current.left
+                    is_left = True
+                if current is None:
+                    return False
+
+            if current.left is None and current.right is None:
+                if current == self.root:
+                    self.root = None
+                elif is_left == True:
+                    self.list.remove(str(parent.value) + " -> " + str(current.value))
+                    parent.left = None
+                else:
+                    self.list.remove(str(parent.value) + " -> " + str(current.value))
+                    parent.right = None
+            elif current.left and current.right is None:
+                if current == self.root:
+                    self.list[self.list.index(f"{parent.value} -> {current.value}")] = (
+                        f"{parent.value} -> {current.left.value}"
+                    )
+                    self.root = current.left
+                elif is_left:
+                    self.list[self.list.index(f"{parent.value} -> {current.value}")] = (
+                        f"{parent.value} -> {current.left.value}"
+                    )
+                    self.list.remove(f"{current.value} -> {current.left.value}")
+                    parent.left = current.left
+                else:
+                    self.list[self.list.index(f"{parent.value} -> {current.value}")] = (
+                        f"{parent.value} -> {current.left.value}"
+                    )
+                    self.list.remove(f"{current.value} -> {current.left.value}")
+                    parent.right = current.left
+            elif current.right and current.left is None:
+                if current == self.root:
+                    self.list[self.list.index(f"{parent.value} -> {current.value}")] = (
+                        f"{parent.value} -> {current.right.value}"
+                    )
+                    self.root = current.right
+                elif is_left:
+                    self.list[self.list.index(f"{parent.value} -> {current.value}")] = (
+                        f"{parent.value} -> {current.right.value}"
+                    )
+                    self.list.remove(f"{current.value} -> {current.right.value}")
+                    parent.left = current.right
+                else:
+                    self.list[self.list.index(f"{parent.value} -> {current.value}")] = (
+                        f"{parent.value} -> {current.right.value}"
+                    )
+                    self.list.remove(f"{current.value} -> {current.right.value}")
+                    parent.right = current.right
+            else:
+                substitute = self.get_substitute(current)
+
+                if substitute == self.root:
+                    self.root = substitute
+                elif is_left:
+                    parent.left = substitute
+                else:
+                    parent.right = substitute
+
+                substitute.left = current.left
+
+            return True
+
 
 bst = BSearchTree()
 bst.insert(53)
@@ -87,3 +181,7 @@ bst.find(34)
 bst.pre_order(bst.root)
 bst.in_order(bst.root)
 bst.post_order(bst.root)
+bst.remove(9)
+bst.remove(14)
+bst.remove(72)
+bst.in_order(bst.root)
